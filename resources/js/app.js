@@ -1,13 +1,8 @@
-require('./bootstrap');
-window.Vue = require('vue').default;
-import BootstrapVue from "bootstrap-vue"
-
-Vue.use(BootstrapVue) 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('login-component', require('./resources/login/loginComponent.vue').default);
-Vue.component('cadastro-component', require('./resources/cadastro/cadastroComponent.vue').default);
+import './bootstrap';
+import Vue from 'vue';
+import './admin';
+import './index';
 
 const app = new Vue({
     el: '#app',
-    BootstrapVue
 });

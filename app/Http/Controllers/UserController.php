@@ -20,28 +20,17 @@ class UserController extends Controller
 
     public function auth(Request $request)
     {   
-        if (!empty($request->email)) {
-            $email = $request->email;
-        } else {
-            $erroEmail = 'Necessário preencher o email.';
-        }
-        if (!empty($request->password)) {
-            $password = $request->password;
-        } else {
-            $erroPassword = 'Necessário preencher a senha.';
-        }
-        
-        $errors = collect([
-            'email' => $erroEmail,
-            'password' => $erroPassword
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
         ]);
-        
-        // if(Auth::attempt(['email' => $email, 'password' => $password])){
-        //     dd('É noix karalho porra, acelera acelera muito');
-        // }
-        return view('login', [
-            'errors' => $errors,
-        ]);
+
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            return view('home-rede', []);
+        } else {
+            return redirect()->back()->with('danger', 'E-mail ou senha inválida.');
+        }
+
     }
     /**
      * Show the form for creating a new resource.
@@ -61,7 +50,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $this->validate($request, [
+            "first_name" => 'required',
+            "last_name" => 'required',
+            "data_nascimento" => 'required',
+            "cpf" => 'required',
+            "email" => 'required',
+            "password" => 'required',
+            "repeteEmail" => 'required',
+            "repetePassword" => 'required',
+        ]);
+
+        $sanitized = $request->toArray();
+        $sanitized['password'] = password_hash($sanitized['password'], PASSWORD_DEFAULT);
+
+        User::create($sanitized);
     }
 
     /**

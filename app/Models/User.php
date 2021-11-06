@@ -2,23 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    public $timestamps = false;
+
     protected $table = 'user';
+    
     protected $fillable = [
-        'firstname',
+        'first_name',
         'last_name',
         'data_nascimento',
         'cpf',
         'email',
-    ];
-
-    protected $hidden = [
         'password',
-        'remember_token',
     ];
 
 }
