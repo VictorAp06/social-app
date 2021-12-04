@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        return view('login',[]);
+        return view('app.login',[]);
     }
 
     public function auth(Request $request)
@@ -24,9 +24,11 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            return view('home-rede', []);
+        $remember = true;
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)){
+            $user = Auth::user();
+            Auth::login($user, $remember = true);
+            return redirect('/rede/home');
         } else {
             return redirect()->back()->with('danger', 'E-mail ou senha inválida.');
         }
@@ -39,7 +41,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('cadastro',[]);
+        return view('app.cadastro',[]);
     }
 
     /**
@@ -65,6 +67,21 @@ class UserController extends Controller
         $sanitized['password'] = password_hash($sanitized['password'], PASSWORD_DEFAULT);
 
         User::create($sanitized);
+
+        return response()->json([
+            "mensagem" => true 
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        header('Location:' . url('rede/inicio')); die;
     }
 
     /**

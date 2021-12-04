@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+    <br><br>
     <div class="text-center mt-5">
         <img src="/assets/img/logos/logo.png" alt="Logo da Universidade de Uberaba">
     </div>

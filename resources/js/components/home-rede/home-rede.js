@@ -4,7 +4,15 @@ Vue.component('home-rede-component', {
     mixins: [AppForm],
     data() {
         return {
-
+            form: {
+                noticia_id: 1,
+                evento_id: 1,
+                image: {
+                    name: '',
+                    file: {}
+                },
+                descricao: '',
+            }
         }
     },
     methods: {
@@ -12,6 +20,12 @@ Vue.component('home-rede-component', {
 
         },
         onSubmit() {
+
+        },
+        salvarPublicacao() {
+
+        },
+        onFileSelected(event) {
 
         }
     }

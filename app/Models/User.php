@@ -18,6 +18,7 @@ class User extends Authenticatable
         'cpf',
         'email',
         'password',
+        'remember_token',
     ];
 
 }
