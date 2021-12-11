@@ -10,7 +10,7 @@
                     <li>
                         <a href="#">
                             <img src="/assets/imagens/andre2.jpeg" alt="profile">
-                            <span>Victor</span>
+                            <span>{{ Auth::user()->first_name }}</span>
                         </a>
                     </li>
                     <li>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="share_upSide">
                                 <img src="/assets/imagens/andre.jpeg" alt="profile">
-                                <input id="descricao" name="descricao" type="text" placeholder="O que está pensando nesse momento, Keidison?">
+                                <input id="descricao" name="descricao" type="text" placeholder="O que está pensando nesse momento, {{ Auth::user()->first_name }}?">
                             </div>
                         </form>
                         <div class="share_downSide">
@@ -88,7 +88,7 @@
                                 <img src="/assets/imagens/andre2.jpeg" alt="user">
                                 <div class="news_feed_title_content">
                                     <p>{{ $publicacao->user->first_name }}</p>
-                                    <span>12. <i class="fas fa-globe-americas"></i></span>
+                                    <span>{{ $publicacao->created_at }}<i class="fas fa-globe-americas"></i></span>
                                 </div>
                             </div>
                             <div class="news_feed_description">
@@ -109,22 +109,22 @@
                                 <span>2 Compartilhamentos</span>
                             </div>
                         </div>
+                        <div class="likes_buttons">
+                            <div class="likes_buttons_links">
+                                <i class="far fa-thumbs-up"></i>
+                                <span>Curti</span>
+                            </div>
+                            <div class="likes_buttons_links">
+                                <i class="far fa-comment-alt"></i>
+                                <span>Comentar</span>
+                            </div>
+                            <div class="likes_buttons_links">
+                                <i class="fas fa-share"></i>
+                                <span>Compartilhar</span>
+                            </div>
+                        </div>
                     @endforeach
                     <div class="divider"></div>
-                    <div class="likes_buttons">
-                        <div class="likes_buttons_links">
-                            <i class="far fa-thumbs-up"></i>
-                            <span>Curti</span>
-                        </div>
-                        <div class="likes_buttons_links">
-                            <i class="far fa-comment-alt"></i>
-                            <span>Comentar</span>
-                        </div>
-                        <div class="likes_buttons_links">
-                            <i class="fas fa-share"></i>
-                            <span>Compartilhar</span>
-                        </div>
-                    </div>
                 </div>
             </div><!--content_center--> 
             <div class="content_right"></div>

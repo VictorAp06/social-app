@@ -5,18 +5,21 @@
             <input class="input-field" type="text" placeholder="Pesquisar na Social Uniube">
         </div><!--input-icons--> 
     </div><!--div left--> 
-    <!-- <div class="navbar_center">
+    <div class="navbar_center">
         <a href="#" class="active_icon">
             <i class="fas fa-home"></i>
         </a>  
         <a href="#" class="active_icon">
             <i class="fas fa-user-friends"></i>
         </a>
-    </div>  -->
+        <a href="#" class="active_icon">
+            <i class="fas fa-play-circle"></i>
+        </a>
+    </div>
     <div class="navbar_right">
         <div class="navbar_right_profile">
             <img src="/assets/imagens/andre.jpeg" alt="profile">
-            <span>Victor Aparecido</span>
+            <span>{{ Auth::user()->first_name }}</span>
         </div> <!--navbar_right_profile-->
         <div class="navbar_right_links">
             <i class="fas fa-plus"></i>

@@ -52,7 +52,7 @@ Vue.component('cadastro-component', {
             if (this.form.password == '' || this.form.password == null) {
                 errorMsg = true;
                 this.error_password = "Necessário preencher a senha!";
-            } else if (!(this.form.repetePassword === this.form.repetePassword)) {
+            } else if (!(this.form.password === this.form.repetePassword)) {
                 errorMsg = true;
                 this.error_password = "Endereços de senhas não são iguais!";
             }
